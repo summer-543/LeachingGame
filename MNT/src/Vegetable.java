@@ -19,6 +19,10 @@ public class Vegetable extends GameObject {
         setInitialPotassium(); 
     }
 
+    public double getInitialPotassium() {
+    	return this.initialPotassium;
+    }
+    
     private void setInitialPotassium() {
         switch (this.name) {
             case "ほうれん草":

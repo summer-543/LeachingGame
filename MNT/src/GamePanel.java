@@ -11,7 +11,6 @@ import java.awt.Rectangle;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
-import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -61,33 +60,33 @@ public class GamePanel extends JPanel {
         int currentX = 25;
 
         try {
-            BufferedImage knifeImage = ImageIO.read(new File("knife.png"));
+            BufferedImage knifeImage = ImageIO.read(getClass().getResource("/images/knife.png"));
             int knifeWidth = (int) ((double) UNIFORM_OBJECT_HEIGHT / knifeImage.getHeight() * knifeImage.getWidth());
             knifeObject = new GameObject(currentX, 500, knifeWidth, UNIFORM_OBJECT_HEIGHT, knifeImage, false);
             currentX += knifeWidth + SPACING_FROM_RIGHT;
             
-            BufferedImage waterImage = ImageIO.read(new File("sizuku.png"));
+            BufferedImage waterImage = ImageIO.read(getClass().getResource("/images/sizuku.png"));
             int waterWidth = (int) ((double) UNIFORM_OBJECT_HEIGHT / waterImage.getHeight() * waterImage.getWidth());
             waterObject = new GameObject(currentX, 500, waterWidth, UNIFORM_OBJECT_HEIGHT, waterImage, false);
             currentX += waterWidth + SPACING_FROM_RIGHT;
             
-            BufferedImage nabeImage = ImageIO.read(new File("nabe.png"));
+            BufferedImage nabeImage = ImageIO.read(getClass().getResource("/images/nabe.png"));
             int nabeWidth = (int) ((double) UNIFORM_OBJECT_HEIGHT / nabeImage.getHeight() * nabeImage.getWidth());
             nabeObject = new GameObject(currentX, 500, nabeWidth, UNIFORM_OBJECT_HEIGHT, nabeImage, false);
             initialNabeX = currentX;
             initialNabeY = 500;
             currentX += nabeWidth + SPACING_FROM_RIGHT;
             
-            BufferedImage zaruiImage = ImageIO.read(new File("zarui.png"));
+            BufferedImage zaruiImage = ImageIO.read(getClass().getResource("/images/zarui.png"));
             int zaruiWidth = (int) ((double) UNIFORM_OBJECT_HEIGHT / zaruiImage.getHeight() * zaruiImage.getWidth());
             zaruiObject = new GameObject(currentX, 500, zaruiWidth, UNIFORM_OBJECT_HEIGHT, zaruiImage, false);
             currentX += zaruiWidth + SPACING_FROM_RIGHT;
             
-            BufferedImage sinkImage = ImageIO.read(new File("sink.png"));
+            BufferedImage sinkImage = ImageIO.read(getClass().getResource("/images/sink.png"));
             int sinkWidth = (int) ((double) UNIFORM_OBJECT_HEIGHT / sinkImage.getHeight() * sinkImage.getWidth());
             sinkObject = new GameObject(currentX, 500, sinkWidth, UNIFORM_OBJECT_HEIGHT, sinkImage, false);
 
-            BufferedImage patientImage = ImageIO.read(new File("jinzou1.png"));
+            BufferedImage patientImage = ImageIO.read(getClass().getResource("/images/jinzou1.png"));
             int patientHeight = (int) ((double) PATIENT_TARGET_WIDTH / patientImage.getWidth() * patientImage.getHeight());
             patientObject = new Patient(1200 - PATIENT_TARGET_WIDTH - SPACING_FROM_RIGHT - 40, 70, PATIENT_TARGET_WIDTH, patientHeight, "jinzou1.png", "jinzou2.png", "jinzou3.png");
             
@@ -103,28 +102,28 @@ public class GamePanel extends JPanel {
         buttonPanel.setPreferredSize(new Dimension(getPreferredSize().width, BUTTON_PANEL_HEIGHT));
 
 
-        JButton spinachButton = createIconButton("ほうれん草", "hourensou.png");
-        spinachButton.addActionListener(e -> createVegetable("ほうれん草", "hourensou.png"));
+        JButton spinachButton = createIconButton("ほうれん草", "/images/hourensou.png");
+        spinachButton.addActionListener(e -> createVegetable("ほうれん草", "/images/hourensou.png"));
         buttonPanel.add(spinachButton);
 
-        JButton potatoButton = createIconButton("じゃがいも", "jagaimo.png");
-        potatoButton.addActionListener(e -> createVegetable("じゃがいも", "jagaimo.png"));
+        JButton potatoButton = createIconButton("じゃがいも", "/images/jagaimo.png");
+        potatoButton.addActionListener(e -> createVegetable("じゃがいも", "/images/jagaimo.png"));
         buttonPanel.add(potatoButton);
 
-        JButton pumpkinButton = createIconButton("かぼちゃ", "kabotya.png");
-        pumpkinButton.addActionListener(e -> createVegetable("かぼちゃ", "kabotya.png"));
+        JButton pumpkinButton = createIconButton("かぼちゃ", "/images/kabotya.png");
+        pumpkinButton.addActionListener(e -> createVegetable("かぼちゃ", "/images/kabotya.png"));
         buttonPanel.add(pumpkinButton);
         
-        JButton carrotButton = createIconButton("にんじん", "ninjin.png");
-        carrotButton.addActionListener(e -> createVegetable("にんじん", "ninjin.png"));
+        JButton carrotButton = createIconButton("にんじん", "/images/ninjin.png");
+        carrotButton.addActionListener(e -> createVegetable("にんじん", "/images/ninjin.png"));
         buttonPanel.add(carrotButton);
 
-        JButton cucumberButton = createIconButton("きゅうり", "kyuri.png");
-        cucumberButton.addActionListener(e -> createVegetable("きゅうり", "kyuri.png"));
+        JButton cucumberButton = createIconButton("きゅうり", "/images/kyuri.png");
+        cucumberButton.addActionListener(e -> createVegetable("きゅうり", "/images/kyuri.png"));
         buttonPanel.add(cucumberButton);
         
-        JButton shiitakeButton = createIconButton("しいたけ", "shiitake.png");
-        shiitakeButton.addActionListener(e -> createVegetable("しいたけ", "shiitake.png"));
+        JButton shiitakeButton = createIconButton("しいたけ", "/images/shiitake.png");
+        shiitakeButton.addActionListener(e -> createVegetable("しいたけ", "/images/shiitake.png"));
         buttonPanel.add(shiitakeButton);
         
         JButton resetButton = new JButton("Reset");
@@ -147,35 +146,35 @@ public class GamePanel extends JPanel {
     }
 
     private JButton createIconButton(String text, String imagePath) {
-        try {
-            BufferedImage originalImage = ImageIO.read(new File(imagePath));
-            Image scaledImage = originalImage.getScaledInstance(60, 60, Image.SCALE_SMOOTH);
-            ImageIcon icon = new ImageIcon(scaledImage);
-            JButton button = new JButton(text, icon);
+    	java.net.URL imageUrl = getClass().getResource(imagePath);
+        if (imageUrl != null) {
+            ImageIcon icon = new ImageIcon(imageUrl);
+            Image scaledImage = icon.getImage().getScaledInstance(60, 60, Image.SCALE_SMOOTH);
+            ImageIcon scaledIcon = new ImageIcon(scaledImage);
+            JButton button = new JButton(text, scaledIcon);
             button.setVerticalTextPosition(SwingConstants.BOTTOM);
             button.setHorizontalTextPosition(SwingConstants.CENTER);
             button.setFocusPainted(false);
             return button;
-        } catch (IOException e) {
+        } else {
             System.err.println("Error loading image: " + imagePath);
             return new JButton(text);
         }
     }
 
     private void createVegetable(String name, String imagePath) {
-        resetGame(); // 新しい野菜を作成する前にゲーム状態をリセット
+    	resetGame(); 
         BufferedImage tempImage = null;
         try {
-            tempImage = ImageIO.read(new File(imagePath));
-        } catch (IOException e) {
-            System.err.println("Error: " + imagePath + " could not be loaded.");
+            tempImage = ImageIO.read(getClass().getResource(imagePath));
+        } catch (IOException | IllegalArgumentException e) {
+            System.err.println("Error: " + imagePath + " could not be loaded. Please ensure it is in the src/images directory.");
             e.printStackTrace();
             return;
         }
         
         int newHeight = (int) ((double) VEGETABLE_TARGET_WIDTH / tempImage.getWidth() * tempImage.getHeight());
         
-        // 野菜の初期位置をボタンエリアと被らないように調整
         Vegetable newVeg = new Vegetable(50, 50, VEGETABLE_TARGET_WIDTH, newHeight, name, tempImage, true);
         vegetables.add(newVeg);
         
