@@ -273,11 +273,11 @@ public class GamePanel extends JPanel {
                 int newX = e.getX() - dragOffsetX;
                 int newY = e.getY() - dragOffsetY;
 
-                // ⭐ 画面左端、上端の境界線チェック
+                // 画面左端、上端の境界線チェック
                 newX = Math.max(0, newX);
                 newY = Math.max(0, newY);
 
-                // ⭐ 画面右端、下端の境界線チェック
+                // 画面右端、下端の境界線チェック
                 newX = Math.min(getWidth() - draggedObject.width, newX);
                 newY = Math.min(getHeight() - draggedObject.height - BUTTON_PANEL_HEIGHT, newY); // ⭐ getHeight()からBUTTON_PANEL_HEIGHTを引く
 
