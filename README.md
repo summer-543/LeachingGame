@@ -18,7 +18,7 @@ JavaSE-17とEclipse IDEを使って開発しました。
 
 ※このアプリケーションは、JavaSE-17の機能を利用しているため、古いバージョンのJDKでは動作しない可能性があります。
 
-## 実行方法
+## 実行方法１
 
 1.  このGitHubリポジトリをローカルにクローンします。
     ```bash
@@ -28,3 +28,19 @@ JavaSE-17とEclipse IDEを使って開発しました。
 3.  メニューバーから「File」>「Import」を選択し、「General」>「Existing Projects into Workspace」を選んで「Next」をクリックします。
 4.  「Select root directory」で、クローンしたプロジェクトのディレクトリを選択し、「Finish」をクリックします。
 5.  プロジェクトがワークスペースにインポートされたら、プロジェクトを右クリックし、「Run As」>「Java Application」を選択してアプリケーションを起動します。
+
+## 実行方法２
+
+このアプリケーションは、Java実行環境 (JRE) がインストールされているPCであれば、誰でも実行できます。
+
+1.  JREがインストールされていない場合は、以下の公式サイトからダウンロードしてインストールしてください。
+   
+    [Oracle JREダウンロードページ](https://www.java.com/ja/download/)
+
+2.  GitHubの「Releases」ページから最新の LeachingGame.jar ファイルをダウンロードしてください。
+3.  ダウンロードした LeachingGame.jar ファイルをダブルクリックして起動してください。
+
+
+
+
+
